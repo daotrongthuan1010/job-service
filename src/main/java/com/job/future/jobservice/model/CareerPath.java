@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,6 +41,6 @@ public class CareerPath extends Auditlog{
   private String description;
 
   @OneToMany(mappedBy = "careerPath", cascade = CascadeType.ALL)
-  private List<Subject> subjectList;
+  private Set<Subject> subjectList;
 
 }
