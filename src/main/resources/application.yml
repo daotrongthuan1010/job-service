@@ -2,7 +2,7 @@ spring:
   thymeleaf:
     cache: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/job-future
+    url: jdbc:postgresql://localhost:5432/jobservice
     username: postgres
     password: mk123654
   jpa:

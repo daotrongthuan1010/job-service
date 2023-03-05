@@ -19,7 +19,6 @@ public class MessagePropertiesConstants {
   public static final String RESPONSE_401 = "response.jakarta.message.401";
 
   public static final String RESPONSE_403 = "response.jakarta.message.403";
-
   //Check not found
   public static final String RESPONSE_404 = "response.jakarta.message.404";
 

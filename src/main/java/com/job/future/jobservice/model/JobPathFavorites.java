@@ -41,7 +41,7 @@ public class JobPathFavorites {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "favorite_id", referencedColumnName = "id")
-  private Favorites favorite;
+  private Favorites favorites;
 
 
 }

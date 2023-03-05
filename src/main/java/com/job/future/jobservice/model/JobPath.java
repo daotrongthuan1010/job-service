@@ -39,7 +39,7 @@ public class JobPath extends Auditlog{
   @Column(name = "description")
   private String description;
 
-  @OneToMany(mappedBy = "careerPath", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "jobPath", cascade = CascadeType.ALL)
   private Set<Subject> subjectList;
 
   @OneToMany(mappedBy = "jobPath", cascade = CascadeType.ALL)

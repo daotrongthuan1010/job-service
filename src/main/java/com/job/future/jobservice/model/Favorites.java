@@ -45,10 +45,10 @@ public class Favorites extends Auditlog {
   private LocalDateTime createdAt;
 
 
-  @OneToMany(mappedBy = "reaction", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "favorites", fetch = FetchType.LAZY)
   private Set<PostFavorites> postFavorites;
 
-  @OneToMany(mappedBy = "reaction", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "favorites", fetch = FetchType.LAZY)
   private Set<JobPathFavorites> jobPathFavorites;
 
   public void setEndTime(LocalDateTime createdAt, String timeZone) {

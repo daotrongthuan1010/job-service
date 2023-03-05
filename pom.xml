@@ -66,6 +66,9 @@
               <artifactId>lombok</artifactId>
             </exclude>
           </excludes>
+          <arguments>
+            <argument>--spring.profiles.active=dev</argument>
+          </arguments>
         </configuration>
       </plugin>
     </plugins>
