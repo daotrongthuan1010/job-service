@@ -4,9 +4,12 @@ import com.job.future.jobservice.utils.DateTimeUtils;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
@@ -55,6 +58,13 @@ public class Post extends Auditlog{
 
   @Column(name = "rating_avg")
   private Double ratingAvg;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "job")
+  private Job job;
+
+  @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+  private Set<PostFavorites> postFavorites;
 
   public void setRatingAvg(Set<Rating> ratings) {
     this.ratingAvg = ratings.stream()

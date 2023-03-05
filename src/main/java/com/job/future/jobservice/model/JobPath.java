@@ -2,13 +2,16 @@ package com.job.future.jobservice.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -29,7 +32,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "career_paths")
-public class CareerPath extends Auditlog{
+public class JobPath extends Auditlog{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -42,5 +45,13 @@ public class CareerPath extends Auditlog{
 
   @OneToMany(mappedBy = "careerPath", cascade = CascadeType.ALL)
   private Set<Subject> subjectList;
+
+  @OneToMany(mappedBy = "jobPath", cascade = CascadeType.ALL)
+  private Set<Job> jobs;
+
+  @OneToMany(mappedBy = "jobPath")
+  private List<JobFavorites> favorites = new ArrayList<>();
+
+
 
 }
