@@ -8,9 +8,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,6 +30,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "reactions")
 public class Reaction {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -38,13 +39,13 @@ public class Reaction {
   @Column(name = "reaction_type")
   private ReactionType reactionType;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "post_id")
-  private Post post;
+  @OneToMany(mappedBy = "reaction", fetch = FetchType.LAZY)
+  private List<PostReaction> postReactions;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "comment_id")
-  private Comment comment;
+  @OneToMany(mappedBy = "reaction", fetch = FetchType.LAZY)
+  private List<CommentReaction> commentReactions;
+
+
   public enum ReactionType {
     SAD("01"),
     HAPPY("02"),

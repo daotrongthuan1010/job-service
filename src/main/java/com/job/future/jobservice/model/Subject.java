@@ -46,9 +46,8 @@ public class Subject extends Auditlog{
   private String description;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "job_path_id")
+  @JoinColumn(name = "job_path_id", referencedColumnName = "id")
   private JobPath jobPath;
-
 
   public void setStartTime(LocalDateTime startTime, String timeZone) {
     this.startTime = DateTimeUtils.convertToUTC(startTime, timeZone);

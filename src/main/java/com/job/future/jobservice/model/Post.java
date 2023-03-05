@@ -13,6 +13,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,8 +52,6 @@ public class Post extends Auditlog{
 
   @Column(name = "views")
   private Long views;
-  @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-  private Set<Rating> ratings;
 
   @Column(name = "created_at")
   private LocalDateTime createdAt;
@@ -59,12 +59,23 @@ public class Post extends Auditlog{
   @Column(name = "rating_avg")
   private Double ratingAvg;
 
+  @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+  private Set<Rating> ratings;
+
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "job")
+  @JoinColumn(name = "job", referencedColumnName = "id")
   private Job job;
+
+  @OneToMany(mappedBy = "post")
+  private List<PostReaction> postReactions = new ArrayList<>();
+
 
   @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
   private Set<PostFavorites> postFavorites;
+
+  @OneToMany(mappedBy = "post")
+  private List<Comment> comments = new ArrayList<>();
+
 
   public void setRatingAvg(Set<Rating> ratings) {
     this.ratingAvg = ratings.stream()

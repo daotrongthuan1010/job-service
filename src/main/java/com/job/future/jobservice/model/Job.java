@@ -12,8 +12,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -54,11 +52,11 @@ public class Job extends Auditlog{
   private JobStatus status;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "job_path_id")
+  @JoinColumn(name = "job_path_id", referencedColumnName = "id")
   private JobPath jobPath;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "job_category_id")
+  @JoinColumn(name = "job_category_id", referencedColumnName = "id")
   private JobCategory jobCategory;
 
   @OneToMany(mappedBy = "job",fetch = FetchType.LAZY)

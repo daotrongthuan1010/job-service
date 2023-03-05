@@ -35,7 +35,6 @@ public class PostFavorites {
   @JoinColumn(name = "post_id", referencedColumnName = "id")
   private Post post;
 
-
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "favorite_id", referencedColumnName = "id")
   private Favorites favorite;

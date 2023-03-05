@@ -1,13 +1,21 @@
 package com.job.future.jobservice.model;
 
 import com.job.future.jobservice.utils.DateTimeUtils;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,6 +50,16 @@ public class Comment {
   private Long views;
   @Column(name = "created_at")
   private LocalDateTime createdAt;
+
+  @OneToMany(mappedBy = "comment")
+  private List<CommentReaction> commentReactions = new ArrayList<>();
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "post_id", referencedColumnName = "id")
+  private Post post;
+
+  @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
+  private Set<Rating> ratings;
 
   public void setCreatedAt(LocalDateTime createdAt, String timeZone) {
     this.createdAt = DateTimeUtils.convertToUTC(createdAt, timeZone);

@@ -26,8 +26,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "job_favorites")
-public class JobFavorites {
+@Table(name = "job_path_favorites")
+public class JobPathFavorites {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -37,8 +38,6 @@ public class JobFavorites {
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "job_path_id", referencedColumnName = "id")
   private JobPath jobPath;
-
-  // other fields and methods
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "favorite_id", referencedColumnName = "id")
