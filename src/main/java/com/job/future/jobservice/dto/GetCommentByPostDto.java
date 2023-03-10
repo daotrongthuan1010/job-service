@@ -15,6 +15,8 @@ public class GetCommentByPostDto {
 
   private String content;
 
+  private Integer views;
+
   private LocalDateTime updatedAt;
 
 }
