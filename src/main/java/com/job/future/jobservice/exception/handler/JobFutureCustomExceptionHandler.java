@@ -1,4 +1,4 @@
-package com.job.future.careerorientation.exception.handler;
+package com.job.future.jobservice.exception.handler;
 
 
 import com.job.future.jobservice.exception.BusinessException;
