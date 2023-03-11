@@ -27,10 +27,10 @@ import lombok.Setter;
  * @version 1.0
  * @since 2023-02-11
  */
-@Entity
-@Builder
 @Getter
 @Setter
+@Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "comments")

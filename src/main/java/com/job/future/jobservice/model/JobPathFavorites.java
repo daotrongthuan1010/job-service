@@ -20,14 +20,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Builder
 @Getter
 @Setter
+@Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "job_path_favorites")
-public class JobPathFavorites {
+public class JobPathFavorites extends Auditlog{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
