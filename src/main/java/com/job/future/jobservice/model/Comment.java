@@ -27,14 +27,14 @@ import lombok.Setter;
  * @version 1.0
  * @since 2023-02-11
  */
-@Entity
-@Builder
 @Getter
 @Setter
+@Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "comments")
-public class Comment {
+public class Comment extends Auditlog{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,5 +64,6 @@ public class Comment {
   public void setCreatedAt(LocalDateTime createdAt, String timeZone) {
     this.createdAt = DateTimeUtils.convertToUTC(createdAt, timeZone);
   }
+
 
 }

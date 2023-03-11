@@ -22,12 +22,12 @@ import lombok.Setter;
  * @since 2023-02-11
  */
 
-@Entity
-@Builder
 @Getter
 @Setter
-@AllArgsConstructor
+@Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "job_categories")
 public class JobCategory extends Auditlog{
 

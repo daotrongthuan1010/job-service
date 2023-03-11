@@ -1,5 +1,6 @@
 package com.job.future.jobservice.dto;
 
+import jakarta.persistence.Column;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Data;
@@ -11,14 +12,18 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class GetCommentByPostDto {
+public class GetPostByName {
 
-  private String id;
+  private String code;
+
+  private String title;
 
   private String content;
 
-  private LocalDateTime updatedAt;
+  private Long views;
 
-  private String count;
+  private LocalDateTime createdAt;
+
+  private Double ratingAvg;
 
 }
