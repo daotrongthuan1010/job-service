@@ -12,4 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface JobRepository extends JpaRepository<Long, Job> {
 
+  void saveOrUpdate(Job job);
+
+  void  deleteById(Long id);
 }
