@@ -48,7 +48,7 @@ public class JobServiceIpm implements JobService {
         .jobCategory(jobCategory)
         .build();
 
-    jobRepository.saveOrUpdate(job);
+    jobRepository.save(job);
 
   }
 }

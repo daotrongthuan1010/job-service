@@ -13,9 +13,9 @@ import org.springframework.stereotype.Repository;
  * @since 2023-02-11
  */
 @Repository
-public interface JobPathRepository extends JpaRepository<Long, JobPath> {
+public interface JobPathRepository extends JpaRepository<JobPath, Long> {
 
-  void save(JobPath jobPath);
+
 
   @Cacheable("jobPathCache")
   Optional<JobPath> findById(Long idJobPath);

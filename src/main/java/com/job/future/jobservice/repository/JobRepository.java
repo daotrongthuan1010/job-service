@@ -10,9 +10,8 @@ import org.springframework.stereotype.Repository;
  * @since 2023-02-11
  */
 @Repository
-public interface JobRepository extends JpaRepository<Long, Job> {
+public interface JobRepository extends JpaRepository<Job, Long> {
 
-  void saveOrUpdate(Job job);
 
   void  deleteById(Long id);
 }
