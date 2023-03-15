@@ -22,7 +22,7 @@ public class PostJobDTO {
 
   private Double salaryAvg;
 
-  private String status;
+  private int status;
 
   private Long idJobPath;
 

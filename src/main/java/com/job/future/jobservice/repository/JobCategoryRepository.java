@@ -14,8 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface JobCategoryRepository extends JpaRepository<JobCategory, Long> {
 
-
-
   @Cacheable("jobCategoryCache")
   Optional<JobCategory> findById(Long idCategoryJob);
+
 }
