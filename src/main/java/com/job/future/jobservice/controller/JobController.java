@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class JobController {
 
   private final PostJobUseCase useCase;
+
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping("/post_job")
   public void index(@RequestBody PostJobApiRequest request) throws ServiceException {

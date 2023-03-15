@@ -6,6 +6,7 @@ import com.job.future.jobservice.exception.ServiceException;
 import com.job.future.jobservice.service.JobService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,7 +19,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PostJobUseCase {
 
-    private JobService jobService;
+
+    private final JobService jobService;
 
     public void execute(PostJobApiRequest apiRequest) throws ServiceException {
 
@@ -27,11 +29,10 @@ public class PostJobUseCase {
       jobService.save(PostJobDTO.builder()
               .code(apiRequest.getCode())
                   .name(apiRequest.getName())
-                      .status(apiRequest.getStatus())
+                      .status(Integer.parseInt(apiRequest.getStatus()))
                           .salaryAvg(apiRequest.getSalaryAvg())
                               .idCategoryJob(apiRequest.getIdCategoryJob())
                                   .idJobPath(apiRequest.getIdJobPath())
-
               .build());
 
     }

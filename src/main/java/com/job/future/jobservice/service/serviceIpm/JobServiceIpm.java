@@ -14,6 +14,7 @@ import com.job.future.jobservice.service.JobService;
 import java.util.Optional;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,11 +26,15 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class JobServiceIpm implements JobService {
 
-  private JobRepository jobRepository;
 
-  private JobCustomRepository jobCustomRepository;
-  private JobCategoryRepository jobCategoryRepository;
-  private JobPathRepository jobPathRepository;
+  private final JobRepository jobRepository;
+
+
+  private final JobCustomRepository jobCustomRepository;
+
+  private final JobCategoryRepository jobCategoryRepository;
+
+  private final JobPathRepository jobPathRepository;
 
 
   @Override

@@ -37,7 +37,6 @@ public class Job extends Auditlog{
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-
   @Column(name="code")
   private String code;
 
@@ -47,9 +46,8 @@ public class Job extends Auditlog{
   @Column(name = "salary_avg")
   private Double salaryAvg;
 
-  @Enumerated(EnumType.STRING)
   @Column(name = "job_status")
-  private JobStatus status;
+  private int jobStatus;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "job_path_id", referencedColumnName = "id")
@@ -61,26 +59,6 @@ public class Job extends Auditlog{
 
   @OneToMany(mappedBy = "job",fetch = FetchType.LAZY)
   private Set<Post> posts;
-
-
-  public enum JobStatus {
-
-    CREATED("01"),
-    ASSIGNED("02"),
-    IN_PROGRESS("03"),
-    COMPLETED("04"),
-    CANCELLED("05");
-
-    private String value;
-
-    private JobStatus(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-  }
 
 
 }
