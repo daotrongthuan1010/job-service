@@ -3,7 +3,6 @@ package com.job.future.jobservice.service.serviceIpm;
 import com.job.future.jobservice.dto.PostJobDTO;
 import com.job.future.jobservice.exception.ServiceException;
 import com.job.future.jobservice.model.Job;
-import com.job.future.jobservice.model.Job.JobStatus;
 import com.job.future.jobservice.model.JobCategory;
 import com.job.future.jobservice.model.JobPath;
 import com.job.future.jobservice.repository.JobCategoryRepository;
@@ -11,10 +10,7 @@ import com.job.future.jobservice.repository.JobCustomRepository;
 import com.job.future.jobservice.repository.JobPathRepository;
 import com.job.future.jobservice.repository.JobRepository;
 import com.job.future.jobservice.service.JobService;
-import java.util.Optional;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**

@@ -42,9 +42,7 @@ public class ValidationException extends RuntimeException {
     this.errorMessages = Arrays.asList(messageKey);
   }
 
-  public ValidationException(Set<String> errorMesages){
-    this.errorMessages = errorMesages;
-  }
+
 
   public String getMessage(){
     return "error validate";

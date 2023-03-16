@@ -5,6 +5,7 @@ import com.job.future.jobservice.controller.usecase.PostJobUseCase;
 import com.job.future.jobservice.exception.ServiceException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,8 @@ public class JobController {
 
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping("/post_job")
-  public void index(@RequestBody PostJobApiRequest request) throws ServiceException {
+  public void index(@RequestBody PostJobApiRequest request, Authentication authentication) throws ServiceException {
+    String username = authentication.getName();
     useCase.execute(request);
   }
 

@@ -46,9 +46,6 @@ public class Job extends Auditlog{
   @Column(name = "salary_avg")
   private Double salaryAvg;
 
-  @Column(name = "job_status")
-  private int jobStatus;
-
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "job_path_id", referencedColumnName = "id")
   private JobPath jobPath;
