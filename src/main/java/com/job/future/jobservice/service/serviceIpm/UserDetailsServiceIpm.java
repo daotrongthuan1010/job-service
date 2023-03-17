@@ -4,7 +4,6 @@ import com.job.future.jobservice.model.User;
 import com.job.future.jobservice.repository.UserRepository;
 import java.util.ArrayList;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,7 +26,7 @@ public class UserDetailsServiceIpm implements UserDetailsService {
         .orElseThrow(() -> new UsernameNotFoundException("User not found with github id: " + githubId));
 
     return new org.springframework.security.core.userdetails.User(
-        user.getAuthen_id(),
+        user.getName(),
         user.getAccessToken(),
         new ArrayList<>());
   }

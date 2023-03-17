@@ -17,21 +17,16 @@ import lombok.Setter;
  * @version 1.0
  * @since 2023-02-11
  */
-@Entity
 @Getter
-@Setter
+@Entity
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
-public class User extends Auditlog {
-
+@AllArgsConstructor
+@Table(name = "users")
+public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  @Column(name = "code")
-  private String code;
 
   @Column(name = "name")
   private String name;
@@ -40,8 +35,9 @@ public class User extends Auditlog {
   private String email;
 
   @Column(name = "authen_id")
-  private String authen_id;
+  private String authenId;
 
   @Column(name = "access_token")
   private String accessToken;
+
 }

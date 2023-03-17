@@ -2,7 +2,6 @@ package com.job.future.jobservice.service;
 
 import com.job.future.jobservice.model.User;
 import com.job.future.jobservice.repository.UserRepository;
-import com.job.future.jobservice.service.serviceIpm.UserDetailsServiceIpm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -32,15 +31,13 @@ public class GithubOAuth2UserService extends DefaultOAuth2UserService {
     String accessToken = userRequest.getAccessToken().getTokenValue();
 
     User user = userRepository.findByAuthenId(githubId)
-        .orElseGet(User::new);
-
-    assert githubId != null;
-    User.builder()
-        .id(Long.valueOf(githubId))
-        .name(name)
-        .email(email)
-        .authen_id(githubId)
-        .accessToken(accessToken);
+        .orElse(User.builder()
+                .name(name)
+                .email(email)
+                .authenId(githubId)
+                .accessToken(accessToken)
+                .build()
+            );
     userRepository.save(user);
 
     return oAuth2User;
