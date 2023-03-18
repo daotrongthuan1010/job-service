@@ -1,6 +1,8 @@
 package com.job.future.jobservice.api.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.job.future.jobservice.validate.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -15,13 +17,13 @@ import lombok.Getter;
 @Builder
 public class PostJobApiRequest {
 
-
+  @NotNull
   private final String code;
 
-
+  @NotNull
   private final String name;
 
-
+  @Min
   private final Double salaryAvg;
 
 

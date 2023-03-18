@@ -1,7 +1,9 @@
 package com.job.future.jobservice.validate;
 
+import jakarta.validation.Constraint;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import java.lang.annotation.Annotation;
 import java.util.regex.Pattern;
 import org.springframework.util.StringUtils;
 
@@ -10,9 +12,8 @@ import org.springframework.util.StringUtils;
  * @version 1.0
  * @since 2023-02-11
  */
-public class MailValidator implements ConstraintValidator<Mail, String> {
-
-  private final static Pattern pattern =Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+public class PhoneValidator implements ConstraintValidator<Phone, String> {
+  private final Pattern pattern = Pattern.compile("^(\\+\\d{1,2})?\\s*\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}$");
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
@@ -22,7 +23,5 @@ public class MailValidator implements ConstraintValidator<Mail, String> {
       result = pattern.matcher(value).matches();
     }
     return result;
-
   }
-
 }
