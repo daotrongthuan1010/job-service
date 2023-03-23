@@ -1,7 +1,6 @@
 package com.job.future.jobservice.repository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+
 
 /**
  * @author thuandao1010

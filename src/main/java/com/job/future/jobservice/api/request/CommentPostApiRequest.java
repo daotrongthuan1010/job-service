@@ -1,7 +1,7 @@
 package com.job.future.jobservice.api.request;
 
 import com.job.future.jobservice.validate.Max;
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author thuandao1010
