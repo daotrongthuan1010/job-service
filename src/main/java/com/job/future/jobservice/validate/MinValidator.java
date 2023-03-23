@@ -1,7 +1,7 @@
 package com.job.future.jobservice.validate;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 public class MinValidator implements ConstraintValidator<Min, String> {
 

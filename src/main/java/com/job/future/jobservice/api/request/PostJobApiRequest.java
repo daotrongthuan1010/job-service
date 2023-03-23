@@ -2,7 +2,7 @@ package com.job.future.jobservice.api.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.job.future.jobservice.validate.Min;
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;

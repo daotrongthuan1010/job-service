@@ -1,7 +1,7 @@
 package com.job.future.jobservice.repository.repositoryIpm;
 
 import com.job.future.jobservice.repository.JobCustomRepository;
-import jakarta.persistence.EntityManager;
+import javax.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
 
 /**
