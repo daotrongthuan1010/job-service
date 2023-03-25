@@ -15,4 +15,6 @@ public class JobCustomRepositoryIpm implements JobCustomRepository {
   private EntityManager entityManager;
 
 
+
+
 }
