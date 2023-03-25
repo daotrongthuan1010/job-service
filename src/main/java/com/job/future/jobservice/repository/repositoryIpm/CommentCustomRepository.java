@@ -1,5 +1,7 @@
 package com.job.future.jobservice.repository.repositoryIpm;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,4 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CommentCustomRepository {
 
+  @PersistenceContext
+  private EntityManager entityManager;
 }
