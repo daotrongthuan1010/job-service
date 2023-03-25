@@ -1,7 +1,7 @@
 package com.job.future.jobservice.repository.repositoryIpm;
 
-import com.job.future.jobservice.repository.JobCustomRepository;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,12 +9,10 @@ import org.springframework.stereotype.Repository;
  * @version 1.0
  * @since 2023-02-11
  */
+
 @Repository
-public class JobCustomRepositoryIpm implements JobCustomRepository {
+public class CommentCustomRepository {
 
+  @PersistenceContext
   private EntityManager entityManager;
-
-
-
-
 }
