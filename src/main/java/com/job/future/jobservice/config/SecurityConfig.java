@@ -1,6 +1,6 @@
 package com.job.future.jobservice.config;
 
-import com.job.future.jobservice.service.serviceIpm.CustomOAuth2UserService;
+import com.job.future.jobservice.config.oauthen2.CustomOAuthen2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,7 +18,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  private final CustomOAuth2UserService userService;
+  private final CustomOAuthen2UserService userService;
 
   private final String[] urlPermitAll = {
       "/province/**", "/add/**","/job/**","/login"
@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
-        .antMatchers(urlPermitAll).permitAll()
+        .antMatchers("/login/**","/").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin().permitAll()

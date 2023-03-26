@@ -19,8 +19,8 @@ spring:
       client:
         registration:
           github:
-            client-id: c1117f0b68afdaa0cbb0
-            client-secret: 93f50717bdc8bb0c15245216b705f8c2523ef249
+            client-id: 92571527a114971fb94e
+            client-secret: dc1a7d436466cbd0f686382ce3e2614dda91ccdd
             redirect-uri: http://localhost:8080/login/oauth2/code/github
         provider:
           github:
@@ -37,4 +37,5 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 server:
   port: 8080
+
 

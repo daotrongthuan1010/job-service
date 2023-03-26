@@ -26,6 +26,8 @@ public class PostJobUseCase {
 
       log.info(apiRequest.toString());
 
+
+
       jobService.save(PostJobDTO.builder()
               .code(apiRequest.getCode())
                   .name(apiRequest.getName())
