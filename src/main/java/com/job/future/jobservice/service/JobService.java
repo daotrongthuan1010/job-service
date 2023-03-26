@@ -2,6 +2,8 @@ package com.job.future.jobservice.service;
 
 import com.job.future.jobservice.dto.PostJobDTO;
 import com.job.future.jobservice.exception.ServiceException;
+import com.job.future.jobservice.model.Job;
+import java.util.List;
 
 /**
  * @author thuandao1010
@@ -11,5 +13,7 @@ import com.job.future.jobservice.exception.ServiceException;
 public interface JobService {
 
   void save(PostJobDTO postJobDTO) throws ServiceException;
+
+  List<Job> findAll();
 
 }

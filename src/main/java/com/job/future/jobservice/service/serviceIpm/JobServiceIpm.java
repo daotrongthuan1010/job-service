@@ -10,6 +10,7 @@ import com.job.future.jobservice.repository.JobCustomRepository;
 import com.job.future.jobservice.repository.JobPathRepository;
 import com.job.future.jobservice.repository.JobRepository;
 import com.job.future.jobservice.service.JobService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +51,14 @@ public class JobServiceIpm implements JobService {
         .build();
 
     jobRepository.save(job);
+
+  }
+
+  @Override
+  public List<Job> findAll() {
+
+   return jobRepository.findAll();
+
 
   }
 }

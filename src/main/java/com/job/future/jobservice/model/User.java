@@ -1,7 +1,10 @@
 package com.job.future.jobservice.model;
 
+import com.job.future.jobservice.model.enums.AuthenticationProvider;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,5 +41,9 @@ public class User {
 
   @Column(name = "access_token")
   private String accessToken;
+
+  @Enumerated(EnumType.STRING)
+  @Column(name = "auth_provider")
+  private AuthenticationProvider authenticationProvider;
 
 }
