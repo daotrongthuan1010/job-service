@@ -24,8 +24,7 @@ public class ProvinceController {
   private final PostProvinceUseCase postProvinceUseCase;
 
   @GetMapping("/get_all")
-  public void index() throws
-      ServiceException {
+  public void index() throws ServiceException {
     postProvinceUseCase.execute();
   }
 }

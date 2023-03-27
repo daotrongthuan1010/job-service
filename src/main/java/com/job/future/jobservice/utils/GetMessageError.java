@@ -2,6 +2,7 @@ package com.job.future.jobservice.utils;
 
 import java.util.Locale;
 import org.springframework.context.MessageSource;
+import org.springframework.http.HttpStatus;
 
 /**
  * @author thuandao1010
@@ -14,5 +15,9 @@ public class GetMessageError {
 
   public String getErrorMessage(String key){
     return messageSource.getMessage(key, null, Locale.getDefault());
+  }
+
+  public String getErrorMessage(HttpStatus status){
+    return messageSource.getMessage("Not_Found", null, Locale.getDefault());
   }
 }
