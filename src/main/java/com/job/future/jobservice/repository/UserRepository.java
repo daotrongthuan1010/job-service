@@ -3,6 +3,7 @@ package com.job.future.jobservice.repository;
 import com.job.future.jobservice.model.User;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,6 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   Optional<User> findById(Long id);
 
+  @Query(value = "SELECT * FROM ", nativeQuery = true)
   Optional<User> loadByUserName(String username);
 
 
