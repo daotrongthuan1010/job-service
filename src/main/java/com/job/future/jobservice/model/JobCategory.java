@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,25 +30,23 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "job_categories")
-public class JobCategory extends Auditlog{
+public class JobCategory extends Auditlog {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "description")
-  private String description;
+    @Column(name = "description")
+    private String description;
 
-  @Column(name = "code")
-  private String code;
+    @Column(name = "code")
+    private String code;
 
-  @OneToMany(mappedBy = "jobCategory", fetch = FetchType.LAZY)
-  private List<Job> jobs = new ArrayList<>();
-
-
+    @OneToMany(mappedBy = "jobCategory", fetch = FetchType.LAZY)
+    private List<Job> jobs = new ArrayList<>();
 
 
 }

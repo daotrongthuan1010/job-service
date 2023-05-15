@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/subject")
 public class SubjectController {
 
-    public ResponseEntity<Subject> getHome(){
+    public ResponseEntity<Subject> getHome() {
 
         return null;
     }

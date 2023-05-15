@@ -14,5 +14,5 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ServiceException extends Exception {
 
-  private final String causeId;
+    private final String causeId;
 }

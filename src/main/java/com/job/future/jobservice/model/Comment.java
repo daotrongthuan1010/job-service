@@ -1,6 +1,7 @@
 package com.job.future.jobservice.model;
 
 import com.job.future.jobservice.utils.DateTimeUtils;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,33 +38,33 @@ import lombok.Setter;
 @Table(name = "comments")
 public class Comment {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "code")
-  private String code;
+    @Column(name = "code")
+    private String code;
 
-  @Column(name = "content")
-  private String content;
+    @Column(name = "content")
+    private String content;
 
-  @Column(name = "views")
-  private Long views;
-  @Column(name = "created_at")
-  private LocalDateTime createdAt;
+    @Column(name = "views")
+    private Long views;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
-  @OneToMany(mappedBy = "comment")
-  private List<CommentReaction> commentReactions = new ArrayList<>();
+    @OneToMany(mappedBy = "comment")
+    private List<CommentReaction> commentReactions = new ArrayList<>();
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "post_id", referencedColumnName = "id")
-  private Post post;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
+    private Post post;
 
-  @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
-  private Set<Rating> ratings;
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
+    private Set<Rating> ratings;
 
-  public void setCreatedAt(LocalDateTime createdAt, String timeZone) {
-    this.createdAt = DateTimeUtils.convertToUTC(createdAt, timeZone);
-  }
+    public void setCreatedAt(LocalDateTime createdAt, String timeZone) {
+        this.createdAt = DateTimeUtils.convertToUTC(createdAt, timeZone);
+    }
 
 }

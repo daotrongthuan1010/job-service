@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,20 +30,20 @@ import lombok.Setter;
 @Table(name = "comment_reactions")
 public class CommentReaction extends Auditlog {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "count_reaction")
-  private int count;
+    @Column(name = "count_reaction")
+    private int count;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "comment_id", referencedColumnName = "id")
-  private Comment comment;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "comment_id", referencedColumnName = "id")
+    private Comment comment;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "reaction_id", referencedColumnName = "id")
-  private Reaction reaction;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reaction_id", referencedColumnName = "id")
+    private Reaction reaction;
 
 
 }

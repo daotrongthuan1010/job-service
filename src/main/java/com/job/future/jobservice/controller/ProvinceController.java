@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/province")
 public class ProvinceController {
 
-  private final PostProvinceUseCase postProvinceUseCase;
+    private final PostProvinceUseCase postProvinceUseCase;
 
-  @GetMapping("/get_all")
-  public void index() throws ServiceException {
-    postProvinceUseCase.execute();
-  }
+    @GetMapping("/get_all")
+    public void index() throws ServiceException {
+        postProvinceUseCase.execute();
+    }
 }

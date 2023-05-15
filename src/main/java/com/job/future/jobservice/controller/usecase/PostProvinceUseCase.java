@@ -3,8 +3,10 @@ package com.job.future.jobservice.controller.usecase;
 import com.job.future.jobservice.api.response.ProvinceApiResponse;
 import com.job.future.jobservice.dto.ProvinceDTO;
 import com.job.future.jobservice.service.serviceIpm.ProvinceService;
+
 import java.util.List;
 import java.util.stream.Collectors;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,25 +19,23 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PostProvinceUseCase {
 
-  private final ProvinceService provinceService;
+    private final ProvinceService provinceService;
 
-  public void execute(){
+    public void execute() {
 
-    List<ProvinceDTO> provinceDTOs = provinceService.getProvinces();
+        List<ProvinceDTO> provinceDTOs = provinceService.getProvinces();
 
-    List<ProvinceApiResponse> responseDataList = provinceDTOs.stream()
-        .map(dto -> ProvinceApiResponse.builder()
-            .code(dto.getCode())
-            .name(dto.getName())
-            .phoneCode(dto.getPhone())
-            .devision_type(dto.getProvince_type())
-            // add more fields as needed
-            .build())
-        .collect(Collectors.toList());
-
-
+        List<ProvinceApiResponse> responseDataList = provinceDTOs.stream()
+                .map(dto -> ProvinceApiResponse.builder()
+                        .code(dto.getCode())
+                        .name(dto.getName())
+                        .phoneCode(dto.getPhone())
+                        .devision_type(dto.getProvince_type())
+                        // add more fields as needed
+                        .build())
+                .collect(Collectors.toList());
 
 
-  }
+    }
 
 }

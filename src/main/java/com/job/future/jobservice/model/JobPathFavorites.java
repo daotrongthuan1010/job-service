@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,21 +28,21 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "job_path_favorites")
-public class JobPathFavorites extends Auditlog{
+public class JobPathFavorites extends Auditlog {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  private String name;
+    private String name;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "job_path_id", referencedColumnName = "id")
-  private JobPath jobPath;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_path_id", referencedColumnName = "id")
+    private JobPath jobPath;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "favorite_id", referencedColumnName = "id")
-  private Favorites favorites;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "favorite_id", referencedColumnName = "id")
+    private Favorites favorites;
 
 
 }

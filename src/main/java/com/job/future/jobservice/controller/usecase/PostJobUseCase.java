@@ -26,14 +26,14 @@ public class PostJobUseCase {
 
       log.info(apiRequest.toString());
 
-      jobService.save(PostJobDTO.builder()
-              .code(apiRequest.getCode())
-                  .name(apiRequest.getName())
-                      .status(Integer.parseInt(apiRequest.getStatus()))
-                          .salaryAvg(apiRequest.getSalaryAvg())
-                              .idCategoryJob(apiRequest.getIdCategoryJob())
-                                  .idJobPath(apiRequest.getIdJobPath())
-              .build());
+        jobService.save(PostJobDTO.builder()
+                .code(apiRequest.getCode())
+                .name(apiRequest.getName())
+                .status(Integer.parseInt(apiRequest.getStatus()))
+                .salaryAvg(apiRequest.getSalaryAvg())
+                .idCategoryJob(apiRequest.getIdCategoryJob())
+                .idJobPath(apiRequest.getIdJobPath())
+                .build());
 
     }
 

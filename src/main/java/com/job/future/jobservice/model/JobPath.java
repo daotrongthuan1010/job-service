@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,26 +29,25 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "job_paths")
-public class JobPath extends Auditlog{
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+public class JobPath extends Auditlog {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "description")
-  private String description;
+    @Column(name = "description")
+    private String description;
 
-  @OneToMany(mappedBy = "jobPath", cascade = CascadeType.ALL)
-  private Set<Subject> subjectList;
+    @OneToMany(mappedBy = "jobPath", cascade = CascadeType.ALL)
+    private Set<Subject> subjectList;
 
-  @OneToMany(mappedBy = "jobPath", cascade = CascadeType.ALL)
-  private Set<Job> jobs;
+    @OneToMany(mappedBy = "jobPath", cascade = CascadeType.ALL)
+    private Set<Job> jobs;
 
-  @OneToMany(mappedBy = "jobPath")
-  private Set<JobPathFavorites> favorites = new HashSet<>();
-
+    @OneToMany(mappedBy = "jobPath")
+    private Set<JobPathFavorites> favorites = new HashSet<>();
 
 
 }
