@@ -1,6 +1,5 @@
 package com.job.future.jobservice.service.serviceIpm;
 
-import com.job.future.jobservice.repository.repositoryIpm.CommentCustomRepository;
 import com.job.future.jobservice.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

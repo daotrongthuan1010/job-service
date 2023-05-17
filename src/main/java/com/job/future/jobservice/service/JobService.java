@@ -1,6 +1,5 @@
 package com.job.future.jobservice.service;
 
-import com.job.future.jobservice.dto.PostJobDTO;
 import com.job.future.jobservice.exception.ServiceException;
 import com.job.future.jobservice.model.Job;
 import java.util.List;

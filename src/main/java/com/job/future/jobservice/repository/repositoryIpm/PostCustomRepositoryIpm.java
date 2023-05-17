@@ -1,11 +1,16 @@
 package com.job.future.jobservice.repository.repositoryIpm;
 
-import com.job.future.jobservice.dto.FindPostDto;
+import com.job.future.jobservice.dto.PostContentDTO;
+import com.job.future.jobservice.model.Post;
 import com.job.future.jobservice.repository.PostCustomRepository;
-import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import com.job.future.jobservice.utils.ConstantSQL;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author thuandao1010
@@ -15,14 +20,31 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PostCustomRepositoryIpm implements PostCustomRepository {
 
-  @PersistenceContext
-  private EntityManager entityManager;
-
-  public List<FindPostDto> findPostByName(String name){
+    @PersistenceContext
+    private EntityManager entityManager;
 
 
-return null;
+    @Override
+    public void save(PostContentDTO postContentDTO) {
 
+        entityManager.persist(
+                Post.builder()
+                        .content(postContentDTO.getContent())
+                        .title(postContentDTO.getTitle())
+                        .createdAt(postContentDTO.getCreatedAt()));
+    }
+
+  @Override
+  public List<PostContentDTO> findPostContentByName(String title) {
+
+
+
+//      return entityManager.createQuery(ConstantSQL.FIND_POST_CONTENT_BY_TITLE, Post.class)
+//              .setParameter("title", title)
+//              .getResultList();
+    return  null;
+
+
+    return null;
   }
-
 }

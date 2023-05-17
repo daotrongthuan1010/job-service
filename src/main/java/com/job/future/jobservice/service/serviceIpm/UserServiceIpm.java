@@ -1,6 +1,5 @@
 package com.job.future.jobservice.service.serviceIpm;
 
-import com.job.future.jobservice.repository.UserRepository;
 import com.job.future.jobservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
