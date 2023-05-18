@@ -1,13 +1,13 @@
 package com.job.future.jobservice.repository.repositoryIpm;
 
-import com.job.future.jobservice.dto.PostContentDTO;
+import com.job.future.jobservice.dto.postcontent.GetPostContentDTO;
+import com.job.future.jobservice.dto.postcontent.PostPostContentDTO;
 import com.job.future.jobservice.model.Post;
 import com.job.future.jobservice.repository.PostCustomRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.job.future.jobservice.utils.ConstantSQL;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,17 +25,16 @@ public class PostCustomRepositoryIpm implements PostCustomRepository {
 
 
     @Override
-    public void save(PostContentDTO postContentDTO) {
+    public void save(PostPostContentDTO postContentDTO) {
 
         entityManager.persist(
                 Post.builder()
                         .content(postContentDTO.getContent())
-                        .title(postContentDTO.getTitle())
-                        .createdAt(postContentDTO.getCreatedAt()));
+                        .title(postContentDTO.getTitle()));
     }
 
   @Override
-  public List<PostContentDTO> findPostContentByName(String title) {
+  public List<GetPostContentDTO> findPostContentByName(String title) {
 
 
 
@@ -45,6 +44,6 @@ public class PostCustomRepositoryIpm implements PostCustomRepository {
     return  null;
 
 
-    return null;
+
   }
 }

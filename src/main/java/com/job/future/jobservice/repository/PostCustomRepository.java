@@ -1,7 +1,8 @@
 package com.job.future.jobservice.repository;
 
 
-import com.job.future.jobservice.dto.PostContentDTO;
+import com.job.future.jobservice.dto.postcontent.GetPostContentDTO;
+import com.job.future.jobservice.dto.postcontent.PostPostContentDTO;
 
 import java.util.List;
 
@@ -12,9 +13,9 @@ import java.util.List;
  */
 public interface PostCustomRepository {
 
-    void save(PostContentDTO postContentDTO);
+    void save(PostPostContentDTO postContentDTO);
 
-    List<PostContentDTO> findPostContentByName(String title);
+    List<GetPostContentDTO> findPostContentByName(String title);
 
 
 
