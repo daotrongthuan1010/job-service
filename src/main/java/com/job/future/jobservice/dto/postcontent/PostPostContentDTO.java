@@ -16,4 +16,6 @@ public class PostPostContentDTO {
 
     private String content;
 
+    private LocalDateTime createAt;
+
 }
