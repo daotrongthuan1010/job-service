@@ -27,6 +27,7 @@ public class PostCustomRepositoryIpm implements PostCustomRepository {
     @Override
     public void save(PostPostContentDTO postContentDTO) {
 
+
         entityManager.persist(
                 Post.builder()
                         .content(postContentDTO.getContent())
