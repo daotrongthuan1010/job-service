@@ -5,7 +5,6 @@ import com.job.future.jobservice.dto.postcontent.PostPostContentDTO;
 import com.job.future.jobservice.repository.PostCustomRepository;
 import com.job.future.jobservice.service.PostService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -34,4 +33,6 @@ public class PostServiceIpm implements PostService {
 
 
     }
+
+
 }
