@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public interface PostContentRepository  extends JpaRepository<Post, Long> {
     @Query(value = ConstantSQL.FIND_POST_CONTENT_BY_TITLE, nativeQuery = true)
-    List<GetPostContentDTO> findPostContentByName(String name);
+    List<Object> findPostContentByName(String title);
 
 
 }
