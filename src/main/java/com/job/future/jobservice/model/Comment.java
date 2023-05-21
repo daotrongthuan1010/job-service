@@ -48,8 +48,12 @@ public class Comment {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "delete_flg")
+    private boolean deleteFlg;
+
     @Column(name = "views")
     private Long views;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
