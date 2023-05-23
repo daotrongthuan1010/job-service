@@ -8,8 +8,11 @@ import com.job.future.jobservice.repository.PostCustomRepository;
 import com.job.future.jobservice.service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.rmi.ServerException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,9 +42,15 @@ public class PostServiceIpm implements PostService {
 
     }
 
+    List<Exception> listError = new ArrayList<>();
     @Override
     public List<GetPostContentDTO> findPostByTitle(String title) {
         List<GetPostContentDTO> list = postCustomRepository.findPostContentByName(title);
+
+        CollectionUtils.isEmpty(list){
+            listError.add(new ServerException("Not found"));
+        }
+
         return list;
     }
 }
