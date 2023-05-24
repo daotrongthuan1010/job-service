@@ -4,10 +4,12 @@ import javax.persistence.Column;
 
 public final class ConstantSQL {
 
-    public static final String FIND_POST_CONTENT_BY_TITLE = "select post .content , post .title , post .created_at , post .created_by, post .views, r.rating, r.content, r.rating \n" +
-            "from posts post  inner join ratings r on post .id = r.post_id inner join comments c on c.post_id  = post .id where post.title like :title";
-
-
+    public static final String FIND_POST_CONTENT_BY_TITLE =
+            "SELECT p.code, p.title , p.content , p.views , p.created_at,  r.rating \n" +
+                    "FROM posts p\n" +
+                    "INNER JOIN ratings r ON r.post_id  = p.id \n" +
+                    "INNER JOIN comments c ON c.post_id = p.id \n" +
+                    "WHERE p.title LIKE :title%";
 
 
 }

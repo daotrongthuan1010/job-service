@@ -1,16 +1,12 @@
 package com.job.future.jobservice.repository.repositoryIpm;
 
-import com.job.future.jobservice.dto.postcontent.GetPostContentDTO;
 import com.job.future.jobservice.dto.postcontent.PostPostContentDTO;
 import com.job.future.jobservice.model.Post;
-import com.job.future.jobservice.repository.PostCustomRepository;
-
+import com.job.future.jobservice.repository.PostContentCustomRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * @author thuandao1010
@@ -18,34 +14,22 @@ import java.util.List;
  * @since 2023-02-11
  */
 @Repository
-public class PostCustomRepositoryIpm implements PostCustomRepository {
+public class PostCustomRepositoryIpm implements PostContentCustomRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
 
 
     @Override
+    @Transactional
     public void save(PostPostContentDTO postContentDTO) {
 
+        Post post = Post.builder()
+                .content(postContentDTO.getContent())
+                .createdAt(postContentDTO.getCreateAt())
+                .title(postContentDTO.getTitle()).build();
 
-        entityManager.persist(
-                Post.builder()
-                        .content(postContentDTO.getContent())
-                        .title(postContentDTO.getTitle()));
+        entityManager.persist(post);
+
     }
-
-  @Override
-  public List<GetPostContentDTO> findPostContentByName(String title) {
-
-
-
-
-//      return entityManager.createQuery(ConstantSQL.FIND_POST_CONTENT_BY_TITLE, Post.class)
-//              .setParameter("title", title)
-//              .getResultList();
-    return  null;
-
-
-
-  }
 }

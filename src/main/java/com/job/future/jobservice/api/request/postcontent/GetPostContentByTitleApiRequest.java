@@ -6,12 +6,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class PostPostContentApiRequest {
-
-    private final String code;
+public class GetPostContentByTitleApiRequest {
 
     private final String title;
-
-    private final String content;
-
 }

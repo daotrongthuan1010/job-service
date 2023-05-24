@@ -14,20 +14,20 @@ spring:
       hibernate:
         validator:
           apply_to_ddl: false
-  security:
-    oauth2:
-      client:
-        registration:
-          github:
-            client-id: 92571527a114971fb94e
-            client-secret: dc1a7d436466cbd0f686382ce3e2614dda91ccdd
-            redirect-uri: http://localhost:8080/login/oauth2/code/github
-        provider:
-          github:
-            authorization-uri: https://github.com/login/oauth/authorize
-            token-uri: https://github.com/login/oauth/access_token
-            user-info-uri: https://api.github.com/user
-            user-name-attribute: name
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          github:
+#            client-id: 92571527a114971fb94e
+#            client-secret: dc1a7d436466cbd0f686382ce3e2614dda91ccdd
+#            redirect-uri: http://localhost:8080/login/oauth2/code/github
+#        provider:
+#          github:
+#            authorization-uri: https://github.com/login/oauth/authorize
+#            token-uri: https://github.com/login/oauth/access_token
+#            user-info-uri: https://api.github.com/user
+#            user-name-attribute: name
 
 logging:
   level:

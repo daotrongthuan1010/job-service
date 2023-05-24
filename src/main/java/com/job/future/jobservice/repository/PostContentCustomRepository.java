@@ -11,14 +11,9 @@ import java.util.List;
  * @version 1.0
  * @since 2023-02-11
  */
-public interface PostCustomRepository {
+public interface PostContentCustomRepository {
 
     void save(PostPostContentDTO postContentDTO);
-
-    List<GetPostContentDTO> findPostContentByName(String title);
-
-
-
 
 
 }
