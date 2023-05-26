@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PostPostContentDTO {
 
+    private String id;
+
     private String code;
 
     private String title;

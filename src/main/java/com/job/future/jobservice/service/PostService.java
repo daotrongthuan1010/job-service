@@ -12,8 +12,11 @@ import java.util.List;
  * @since 2023-02-11
  */
 public interface PostService {
+    public String PARAM_NULL = "PARAM_IS_NULL";
 
-    void save(PostPostContentApiRequest postContentDTO);
+    public String NoRecordFound = "NoRecordFound";
+
+    void saveOrUpdate(PostPostContentApiRequest request);
 
     List<GetPostContentDTO> findPostByTitle(String title);
 

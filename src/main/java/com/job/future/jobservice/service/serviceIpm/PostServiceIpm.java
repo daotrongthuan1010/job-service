@@ -1,21 +1,21 @@
 package com.job.future.jobservice.service.serviceIpm;
 
 import com.job.future.jobservice.api.request.postcontent.PostPostContentApiRequest;
-import com.job.future.jobservice.api.response.postcontent.GetPostContentByTitleResponse;
 import com.job.future.jobservice.dto.postcontent.GetPostContentDTO;
 import com.job.future.jobservice.dto.postcontent.PostPostContentDTO;
 import com.job.future.jobservice.repository.PostContentCustomRepository;
 import com.job.future.jobservice.repository.PostContentRepository;
 import com.job.future.jobservice.service.PostService;
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.util.Strings;
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
-import java.rmi.ServerException;
+import org.springframework.util.ObjectUtils;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -27,41 +27,56 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class PostServiceIpm implements PostService {
 
+
     private final PostContentCustomRepository postContentCustomRepository;
 
     private final PostContentRepository postContentRepository;
 
     @Override
-    public void save(PostPostContentApiRequest postPostContentApiRequest) {
+    public void saveOrUpdate(PostPostContentApiRequest request) {
         LocalDateTime localDateTime = LocalDateTime.now();
-        postContentCustomRepository.save(
-                PostPostContentDTO.builder()
-                        .content(postPostContentApiRequest.getContent())
-                        .title(postPostContentApiRequest.getTitle())
-                        .createAt(localDateTime).build()
-        );
+        if (!Objects.isNull(request.getId())) {
 
+            postContentCustomRepository.save(
+                    PostPostContentDTO.builder()
+                            .content(request.getContent())
+                            .title(request.getTitle())
+                            .createAt(localDateTime).build()
+            );
+        } else {
 
+            postContentCustomRepository.update(
+                    PostPostContentDTO.builder()
+                            .content(request.getContent())
+                            .title(request.getTitle())
+                            .createAt(localDateTime).build()
+            );
+        }
     }
 
 
     @Override
     @Transactional(readOnly = true)
     public List<GetPostContentDTO> findPostByTitle(String title) {
-        List<GetPostContentDTO> list = new ArrayList<>();
-        List<Map<String, Object>> obj = postContentRepository.findPostContentByName(title);
-        obj.forEach(x->
-        {
-            list.add(GetPostContentDTO.builder()
-                    .code(String.valueOf(x.get("code")))
-                            .title(String.valueOf(x.get("title")))
-                            .content(String.valueOf(x.get("content")))
 
-                    .build());
+        if (Objects.isNull(title) || Strings.isEmpty(title)) {
+            throw new ServiceException(PostService.PARAM_NULL);
+        }
 
-        });
-        return  list;
+        List<GetPostContentDTO> list = postContentRepository.findPostContentByName(title)
+                .stream()
+                .map(x -> GetPostContentDTO.builder()
+                        .code(String.valueOf(x.get("code")))
+                        .title(String.valueOf(x.get("title")))
+                        .content(String.valueOf(x.get("content")))
+                        .build())
+                .collect(Collectors.toList());
 
+        if (ObjectUtils.isEmpty(list)) {
+            throw new ServiceException(PostService.NoRecordFound);
+        }
+
+        return list;
 
     }
 }

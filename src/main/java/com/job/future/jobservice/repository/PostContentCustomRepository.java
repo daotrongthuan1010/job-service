@@ -15,5 +15,6 @@ public interface PostContentCustomRepository {
 
     void save(PostPostContentDTO postContentDTO);
 
+    void update(PostPostContentDTO postContentDTO);
 
 }
