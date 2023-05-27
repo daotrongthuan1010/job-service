@@ -9,7 +9,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -20,12 +22,22 @@ public class PostController {
 
     @PostMapping("/post-content")
     public void index(@RequestBody PostPostContentApiRequest postPostContentApiRequest) {
-        postService.save(postPostContentApiRequest);
+        postService.saveOrUpdate(postPostContentApiRequest);
     }
 
     @GetMapping("/search-by-title")
-    public ResponseEntity<List<GetPostContentDTO>> searchByTitle(@RequestParam("title") String title) {
-        List<GetPostContentDTO> listPostContent = postService.findPostByTitle(title);
+    public ResponseEntity<List<GetPostContentByTitleResponse>> searchByTitle(@RequestParam("title") String title) {
+        List<GetPostContentByTitleResponse> listPostContent =
+                postService.findPostByTitle(title).stream().map(
+                        x -> GetPostContentByTitleResponse.builder()
+                                .title(x.getTitle())
+                                .content(x.getContent())
+                                .views(x.getViews())
+                                .createdAt(x.getCreatedAt())
+                                .ratingAvg(x.getRatingAvg())
+                                .commentContent(x.getCommentContent())
+                                .commentCreateAt(String.valueOf(x.getCommentCreateAt()))
+                                .build()).collect(Collectors.toList());
         return ResponseEntity.ok(listPostContent);
     }
 

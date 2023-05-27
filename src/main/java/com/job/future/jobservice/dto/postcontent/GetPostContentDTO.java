@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+
 @Getter
 @Builder
 @AllArgsConstructor
@@ -16,9 +17,15 @@ public class GetPostContentDTO {
 
     private String content;
 
-    private Long views;
-
     private LocalDateTime createdAt;
 
-    private Double ratingAvg;
+    private String views;
+
+    private String ratingAvg;
+
+    private String commentContent;
+
+    private LocalDateTime commentCreateAt;
+
+
 }

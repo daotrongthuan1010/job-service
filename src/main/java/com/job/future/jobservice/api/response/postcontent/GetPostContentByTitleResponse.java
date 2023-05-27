@@ -21,11 +21,19 @@ public class GetPostContentByTitleResponse {
     private String content;
 
     @JsonProperty(value = "views")
-    private Long views;
+    private String views;
 
     @JsonProperty(value = "created_at")
     private LocalDateTime createdAt;
 
     @JsonProperty(value = "rating_avg")
-    private Double ratingAvg;
+    private String ratingAvg;
+
+    @JsonProperty(value = "comment_content")
+    private String commentContent;
+
+    @JsonProperty(value = "comment_create_at")
+    private String commentCreateAt;
+
+
 }

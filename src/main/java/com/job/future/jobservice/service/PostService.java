@@ -14,7 +14,7 @@ import java.util.List;
 public interface PostService {
     public String PARAM_NULL = "PARAM_IS_NULL";
 
-    public String NoRecordFound = "NoRecordFound";
+    public String NORECORDFOUND = "NO_RECORD_FOUND";
 
     void saveOrUpdate(PostPostContentApiRequest request);
 
