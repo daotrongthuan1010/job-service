@@ -16,5 +16,10 @@ public class Views {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String count;
+
+
+    private String show;
+
 
 }
