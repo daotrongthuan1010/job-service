@@ -8,24 +8,23 @@ import java.time.LocalDateTime;
 
 @Getter
 @Builder
-@AllArgsConstructor
 public class GetPostContentDTO {
 
-    private String code;
+    private final String code;
 
-    private String title;
+    private final String title;
 
-    private String content;
+    private final String content;
 
-    private LocalDateTime createdAt;
+    private final LocalDateTime createdAt;
 
-    private String views;
+    private final String views;
 
-    private String ratingAvg;
+    private final String ratingAvg;
 
-    private String commentContent;
+    private final String commentContent;
 
-    private LocalDateTime commentCreateAt;
+    private final LocalDateTime commentCreateAt;
 
 
 }

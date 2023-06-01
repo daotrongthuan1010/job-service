@@ -7,18 +7,16 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 @Getter
 @Builder
-@AllArgsConstructor
 public class PostPostContentDTO {
 
-    private String id;
+    private final String id;
 
-    private String code;
+    private final String code;
 
-    private String title;
+    private final  String title;
 
-    private String content;
+    private final  String content;
 
-    private LocalDateTime createAt;
-
+    private final LocalDateTime createAt;
 
 }
