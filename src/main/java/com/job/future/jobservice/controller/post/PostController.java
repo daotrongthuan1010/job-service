@@ -6,6 +6,7 @@ import com.job.future.jobservice.api.response.postcontent.GetPostContentByTitleR
 import com.job.future.jobservice.dto.postcontent.GetPostContentDTO;
 import com.job.future.jobservice.service.PostService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

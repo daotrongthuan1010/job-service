@@ -36,7 +36,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "comments")
-public class Comment {
+public class Comment extends Auditlog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
