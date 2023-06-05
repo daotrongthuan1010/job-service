@@ -1,5 +1,6 @@
 package com.job.future.jobservice.service.serviceIpm;
 
+import com.job.future.jobservice.model.User;
 import com.job.future.jobservice.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

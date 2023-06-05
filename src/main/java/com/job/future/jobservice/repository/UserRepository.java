@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @EntityGraph(value = "UserComplete", type = EntityGraphType.FETCH)
     Optional<User> findByUsername(String username);
-    User findByEmail(String email);
+    Optional<User> findByEmail(String email);
     @Query(value="SELECT u.id, u.email, u.ho_ten FROM quanly.user u where u.ho_ten like :name or u.email = :name", nativeQuery = true)
     List<Map<String, Object>> findAllUserByHoTenorEmail(String name);
 
