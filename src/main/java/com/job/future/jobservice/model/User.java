@@ -1,57 +1,106 @@
 package com.job.future.jobservice.model;
 
-import com.job.future.jobservice.model.enums.AuthenticationProvider;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.job.future.jobservice.model.security.Authority;
+import com.job.future.jobservice.model.security.UserRole;
+import lombok.Data;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-/**
- * @author thuandao1010
- * @version 1.0
- * @since 2023-02-11
- */
-@Getter
+@NamedEntityGraph(
+		name= "UserComplete",
+		attributeNodes= { @NamedAttributeNode(value="userRoles", subgraph="role-subgraph") },
+		subgraphs= {
+				@NamedSubgraph(name = "role-subgraph", attributeNodes = {  @NamedAttributeNode("role") }
+				)}
+)
 @Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Data
+@SuppressWarnings("serial")
+public class User extends Auditlog implements UserDetails, Serializable {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", nullable=false, updatable=false)
+	private Long id;
+	@NotNull
+	private String username;
+	private String password;
+	private String hoTen;
+	private  String imgAvatar;
+	@Transient
+	private String confirmPassword;
+	@Length(min = 10, max =15)
+	private String numberPhone;
+	@Transient
+	private MultipartFile file;
+	@Transient
+	private String passwordConfirm;
+	@NotNull
+	@Email
+	private String email;
 
-    @Column(name = "username")
-    private String username;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
+	private Set<UserRole> userRoles = new HashSet<>();
 
-    @Column(name = "password")
-    private String password;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Comment> comments;
 
-    @Column(name = "name")
-    private String name;
+	public User() {
+	}
 
-    @Column(name = "email")
-    private String email;
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Set<GrantedAuthority> authorites = new HashSet<>();
+		userRoles.forEach(userRole -> authorites.add(new Authority(userRole.getRole().getName())));
+		return authorites;
+	}
 
-    @Column(name = "authen_id")
-    private String authenId;
+	@Override
+	public String toString() {
+	  return getClass().getSimpleName() + "[id=" + id + "]" + "[username=" + username + "]" + "[password=" + password + "]" + "[email=" + email + "]";
+	}
+	
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
 
-    @Column(name = "access_token")
-    private String accessToken;
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+	
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+	
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "auth_provider")
-    private AuthenticationProvider authenticationProvider;
+	public Set<UserRole> getUserRoles() {
+		return userRoles;
+	}
 
+	public void setUserRoles(Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
+	
 }
+
+
+

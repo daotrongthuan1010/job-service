@@ -61,6 +61,7 @@ public class Post extends Auditlog {
     @Column(name = "rating_avg")
     private Double ratingAvg;
 
+
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private Set<Rating> ratings;
 
@@ -77,6 +78,8 @@ public class Post extends Auditlog {
 
     @OneToMany(mappedBy = "post")
     private List<Comment> comments = new ArrayList<>();
+
+
 
 
     public void setRatingAvg(Set<Rating> ratings) {

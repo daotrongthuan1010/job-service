@@ -8,6 +8,7 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Builder
@@ -32,7 +33,7 @@ public class GetPostContentByTitleResponse {
     private String ratingAvg;
 
     @JsonProperty(value = "comments")
-   private List<GetCommentByTitleResponse> comments;
+   private Set<GetCommentByTitleResponse> comments;
 
 
 }

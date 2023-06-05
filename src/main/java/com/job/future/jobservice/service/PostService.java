@@ -1,6 +1,7 @@
 package com.job.future.jobservice.service;
 
 import com.job.future.jobservice.api.request.postcontent.PostPostContentApiRequest;
+import com.job.future.jobservice.api.request.user.UserMock;
 import com.job.future.jobservice.api.response.postcontent.GetPostContentByTitleResponse;
 import com.job.future.jobservice.dto.postcontent.GetPostContentDTO;
 
@@ -16,7 +17,7 @@ public interface PostService {
 
     public String NORECORDFOUND = "NO_RECORD_FOUND";
 
-    void saveOrUpdate(PostPostContentApiRequest request);
+    void saveOrUpdate(PostPostContentApiRequest request, UserMock userMock);
 
     List<GetPostContentDTO> findPostByTitle(String title);
 

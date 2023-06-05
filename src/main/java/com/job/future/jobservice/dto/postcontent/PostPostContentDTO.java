@@ -19,4 +19,8 @@ public class PostPostContentDTO {
 
     private final LocalDateTime createAt;
 
+    private final String username;
+
+    private final String token;
+
 }

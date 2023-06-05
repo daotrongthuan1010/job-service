@@ -21,4 +21,6 @@ public class GetCommentByTitleResponse {
 
     @JsonProperty(value = "comment_reacts")
     private final String commentReactions;
+
+
 }

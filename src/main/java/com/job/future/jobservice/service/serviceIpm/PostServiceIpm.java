@@ -1,6 +1,7 @@
 package com.job.future.jobservice.service.serviceIpm;
 
 import com.job.future.jobservice.api.request.postcontent.PostPostContentApiRequest;
+import com.job.future.jobservice.api.request.user.UserMock;
 import com.job.future.jobservice.dto.postcontent.GetPostContentDTO;
 import com.job.future.jobservice.dto.postcontent.PostPostContentDTO;
 import com.job.future.jobservice.repository.PostContentCustomRepository;
@@ -43,7 +44,7 @@ public class PostServiceIpm implements PostService {
     private static final Logger logger = LoggerUtils.getLogger(PostServiceIpm.class);
 
     @Override
-    public void saveOrUpdate(PostPostContentApiRequest request) {
+    public void saveOrUpdate(PostPostContentApiRequest request, UserMock userMock) {
         log.info("Request: " + request.toString());
         LocalDateTime localDateTime = LocalDateTime.now();
         if (!Objects.isNull(request.getId())) {
@@ -52,7 +53,10 @@ public class PostServiceIpm implements PostService {
                     PostPostContentDTO.builder()
                             .content(request.getContent())
                             .title(request.getTitle())
-                            .createAt(localDateTime).build()
+                            .createAt(localDateTime)
+                            .username(userMock.getUser_id())
+                            .build()
+
             );
         } else {
 

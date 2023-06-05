@@ -15,9 +15,7 @@ public class PostPostContentApiRequest {
 
     private final String code;
 
-
     private final String title;
-
 
     private final String content;
 
