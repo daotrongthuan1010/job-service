@@ -1,6 +1,6 @@
 package com.job.future.jobservice.model.security;
 
-import com.job.future.jobservice.model.User;
+import com.job.future.jobservice.model.Users;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,15 +23,15 @@ public class UserRole {
 	private Long userRoleId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
-	private User user;
+	@JoinColumn(name="users_id")
+	private Users users;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="role_id")
 	private Role role;
 
-	public UserRole(User user, Role role){
-		this.user  = user;
+	public UserRole(Users users, Role role){
+		this.users  = users;
 		this.role = role;
 	}
 

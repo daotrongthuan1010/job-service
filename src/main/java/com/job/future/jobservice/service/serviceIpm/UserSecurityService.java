@@ -1,6 +1,6 @@
 package com.job.future.jobservice.service.serviceIpm;
 
-import com.job.future.jobservice.model.User;
+import com.job.future.jobservice.model.Users;
 import com.job.future.jobservice.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,7 +22,7 @@ public class UserSecurityService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found"));
+		Users user = userRepository.findByUsername(username);
 		return (UserDetails) user;
 	}
 	

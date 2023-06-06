@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public interface CommentRepository extends JpaRepository<Long, Comment> {
-    @Query(value = "", nativeQuery = true)
-    List<Map<String, Object>> findAllComment();
+public interface CommentRepository extends JpaRepository<Comment, Long> {
+
 
 }

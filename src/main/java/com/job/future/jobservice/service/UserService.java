@@ -4,7 +4,7 @@ package com.job.future.jobservice.service;
 
 
 import com.job.future.jobservice.dto.UserDTO;
-import com.job.future.jobservice.model.User;
+import com.job.future.jobservice.model.Users;
 
 
 import java.util.List;
@@ -13,15 +13,15 @@ import java.util.Optional;
 
 public interface UserService {
 	
-	Optional<User> findById(Long id);
+	Optional<Users> findById(Long id);
 	
-	User findByUsername(String username);
+	Users findByUsername(String username);
 		
-	User findByEmail(String email);
+	Users findByEmail(String email);
 		
-	void save(User user);
+	void save(Users user);
 	
-	User createUser(String username, String email,  String password, List<String> roles);
-	List<UserDTO>  findAllUser(String username);
+	Users createUser(String username, String email,  String password, List<String> roles);
+
 
 }

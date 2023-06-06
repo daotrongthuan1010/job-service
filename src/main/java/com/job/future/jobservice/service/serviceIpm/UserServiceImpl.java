@@ -1,14 +1,14 @@
 package com.job.future.jobservice.service.serviceIpm;
 
 import com.job.future.jobservice.dto.UserDTO;
-import com.job.future.jobservice.model.User;
+import com.job.future.jobservice.model.Users;
 import com.job.future.jobservice.model.security.Role;
 import com.job.future.jobservice.model.security.UserRole;
 import com.job.future.jobservice.repository.RoleRepository;
 import com.job.future.jobservice.repository.UserRepository;
 import com.job.future.jobservice.service.UserService;
 import com.job.future.jobservice.utils.SecurityUtility;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,48 +18,46 @@ import java.util.*;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
-	
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Autowired
-	private RoleRepository roleRepository;
 
+	private final UserRepository userRepository;
+
+	private final RoleRepository roleRepository;
 
 	@Override
-	public Optional<User> findById(Long id) {
-		Optional<User> opt = userRepository.findById(id);
+	public Optional<Users> findById(Long id) {
+		Optional<Users> opt = userRepository.findById(id);
 		return opt;
 	}
 	
 	@Override
-	public User findByUsername(String username) {
-		return userRepository.findByUsername(username).orElseThrow(()-> new UsernameNotFoundException("User not found"));
+	public Users findByUsername(String username) {
+		return userRepository.findByUsername(username);
 	}
 	
 
 	@Override
-	public User findByEmail(String email) {
+	public Users findByEmail(String email) {
 		return userRepository.findByEmail(email).orElseThrow(()-> new UsernameNotFoundException("Not found"));
 	}
 
 	@Override
-	public void save(User user) {
+	public void save(Users user) {
 		userRepository.save(user);
 	}
 
 	@Override
 	@Transactional
-	public User createUser(String username, String password, String email, List<String> roles) {
-		User user = findByUsername(username);
-		if (user != null) {
-			return user;
+	public Users createUser(String username, String password, String email, List<String> roles) {
+		Users users = findByUsername(username);
+		if (users != null) {
+			return users;
 		} else {
-			user = new User();
-			user.setUsername(username);
-			user.setPassword(SecurityUtility.passwordEncoder().encode(password));
-			user.setEmail(email);			
+			users = new Users();
+			users.setUsername(username);
+			users.setPassword(SecurityUtility.passwordEncoder().encode(password));
+			users.setEmail(email);
 			Set<UserRole> userRoles = new HashSet<>();
 			for (String rolename : roles) {
 				Role role = roleRepository.findByName(rolename);
@@ -68,31 +66,14 @@ public class UserServiceImpl implements UserService {
 					role.setName(rolename);
 					roleRepository.save(role);
 				}
-				userRoles.add(new UserRole(user, role));
+				userRoles.add(new UserRole(users, role));
 			}
 
-			user.setUserRoles(userRoles);
-			return userRepository.save(user);
+			users.setUserRoles(userRoles);
+			return userRepository.save(users);
 		}
 	}
 
-	@Override
-	public List<UserDTO> findAllUser(String name) {
-		List<UserDTO> list = new ArrayList<>();
-		List<Map<String, Object>> obj = userRepository.findAllUserByHoTenorEmail(name);
-		obj.forEach(x ->
-		{
-			UserDTO userDTO = new UserDTO();
-			userDTO.setId(String.valueOf(x.get("id")));
-			userDTO.setEmail(String.valueOf(x.get("email")));
-			userDTO.setHoTen(String.valueOf(x.get("ho_ten")));
 
-
-			list.add(userDTO);
-
-		});
-
-		return list;
-	}
 
 }

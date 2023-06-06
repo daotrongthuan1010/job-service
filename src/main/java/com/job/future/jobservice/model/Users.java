@@ -3,7 +3,7 @@ package com.job.future.jobservice.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.job.future.jobservice.model.security.Authority;
 import com.job.future.jobservice.model.security.UserRole;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,9 +24,12 @@ import java.util.*;
 				)}
 )
 @Entity
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @SuppressWarnings("serial")
-public class User extends Auditlog implements UserDetails, Serializable {
+public class Users extends Auditlog implements UserDetails, Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -49,22 +52,15 @@ public class User extends Auditlog implements UserDetails, Serializable {
 	@Email
 	private String email;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<UserRole> userRoles = new HashSet<>();
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<Comment> comments;
-
-	public User() {
-	}
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<GrantedAuthority> authorites = new HashSet<>();
-		userRoles.forEach(userRole -> authorites.add(new Authority(userRole.getRole().getName())));
-		return authorites;
+		Set<GrantedAuthority> authorities = new HashSet<>();
+		userRoles.forEach(userRole -> authorities.add(new Authority(userRole.getRole().getName())));
+		return authorities;
 	}
 
 	@Override
