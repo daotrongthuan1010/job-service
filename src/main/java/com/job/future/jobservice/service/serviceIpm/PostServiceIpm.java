@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.hibernate.service.spi.ServiceException;
 import org.slf4j.Logger;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -41,7 +42,7 @@ public class PostServiceIpm implements PostService {
     private static final Logger logger = LoggerUtils.getLogger(PostServiceIpm.class);
 
     @Override
-    public void saveOrUpdate(PostPostContentApiRequest request) {
+    public void saveOrUpdate(PostPostContentApiRequest request, Authentication authentication) {
         log.info("Request: " + request.toString());
         LocalDateTime localDateTime = LocalDateTime.now();
         if (!Objects.isNull(request.getId())) {
@@ -51,8 +52,8 @@ public class PostServiceIpm implements PostService {
                             .content(request.getContent())
                             .title(request.getTitle())
                             .createAt(localDateTime)
+                            .username(authentication.getName())
                             .build()
-
             );
         } else {
 

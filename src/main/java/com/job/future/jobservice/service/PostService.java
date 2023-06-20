@@ -3,6 +3,7 @@ package com.job.future.jobservice.service;
 import com.job.future.jobservice.api.request.postcontent.PostPostContentApiRequest;
 import com.job.future.jobservice.api.response.postcontent.GetPostContentByTitleResponse;
 import com.job.future.jobservice.dto.postcontent.GetPostContentDTO;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface PostService {
 
     public String NORECORDFOUND = "NO_RECORD_FOUND";
 
-    void saveOrUpdate(PostPostContentApiRequest request);
+    void saveOrUpdate(PostPostContentApiRequest request, Authentication authentication);
 
     List<GetPostContentDTO> findPostByTitle(String title);
 

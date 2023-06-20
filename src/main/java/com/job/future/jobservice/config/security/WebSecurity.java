@@ -29,10 +29,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     };
     private static final String[] PRIVATE_ADMIN={
             "/job/**",
-            "/postcontent/**",
             "/comment/**",
-
-
 
     };
 

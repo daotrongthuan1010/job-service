@@ -34,7 +34,8 @@ public class PostCustomRepositoryIpm implements PostContentCustomRepository {
         Post post = Post.builder()
                 .content(postContentDTO.getContent())
                 .createdAt(postContentDTO.getCreateAt())
-                .title(postContentDTO.getTitle()).build();
+                .title(postContentDTO.getTitle())
+                .build();
 
         entityManager.persist(post);
 
