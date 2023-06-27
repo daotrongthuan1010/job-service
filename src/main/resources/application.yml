@@ -39,5 +39,8 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
 server:
   port: 8080
+SECRET_KEY: your_secret_key_value
+EXPIRE_TIME:  86400000
+
 
 

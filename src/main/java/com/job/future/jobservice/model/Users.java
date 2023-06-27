@@ -28,7 +28,6 @@ import java.util.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@SuppressWarnings("serial")
 public class Users extends Auditlog implements UserDetails, Serializable {
 	
 	@Id
@@ -55,6 +54,14 @@ public class Users extends Auditlog implements UserDetails, Serializable {
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<UserRole> userRoles = new HashSet<>();
+
+	public Set<UserRole> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -86,15 +93,7 @@ public class Users extends Auditlog implements UserDetails, Serializable {
 	public boolean isEnabled() {
 		return true;
 	}
-	
 
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
-	}
-
-	public void setUserRoles(Set<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
 	
 }
 
