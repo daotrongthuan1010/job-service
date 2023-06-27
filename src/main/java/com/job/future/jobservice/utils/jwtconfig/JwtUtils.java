@@ -1,6 +1,5 @@
 package com.job.future.jobservice.utils.jwtconfig;
 
-import com.job.future.jobservice.repository.UserRepository;
 import com.job.future.jobservice.utils.SecretKeyGenerator;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
