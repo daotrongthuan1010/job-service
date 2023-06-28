@@ -24,8 +24,8 @@ import java.util.*;
 				)}
 )
 @Entity
-@Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Users extends Auditlog implements UserDetails, Serializable {
@@ -37,7 +37,7 @@ public class Users extends Auditlog implements UserDetails, Serializable {
 	@NotNull
 	private String username;
 	private String password;
-	private String hoTen;
+	private String fullName;
 	private  String imgAvatar;
 	@Transient
 	private String confirmPassword;
