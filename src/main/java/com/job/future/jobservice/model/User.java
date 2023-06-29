@@ -28,7 +28,7 @@ import java.util.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users extends Auditlog implements UserDetails, Serializable {
+public class User extends Auditlog implements UserDetails, Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

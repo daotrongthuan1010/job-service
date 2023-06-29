@@ -1,6 +1,7 @@
 package com.job.future.jobservice.service.serviceIpm;
 
 import com.job.future.jobservice.dto.user.CreateAccountDTO;
+import com.job.future.jobservice.model.User;
 import com.job.future.jobservice.model.Users;
 import com.job.future.jobservice.repository.UserRepository;
 import com.job.future.jobservice.service.UserService;
@@ -22,7 +23,7 @@ public class UserServiceIpm implements UserService {
 
         String encodedPassword = passwordEncoder.encode(accountDTO.getPassword());
 
-        Users users = Users.builder().username(accountDTO.getUsername())
+        User users = User.builder().username(accountDTO.getUsername())
                 .password(encodedPassword)
                 .numberPhone(accountDTO.getNumberPhone())
                 .email(accountDTO.getEmail())

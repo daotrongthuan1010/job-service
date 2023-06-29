@@ -1,6 +1,6 @@
 package com.job.future.jobservice.service.serviceIpm;
 
-import com.job.future.jobservice.model.Users;
+import com.job.future.jobservice.model.User;
 import com.job.future.jobservice.model.security.UserRole;
 import com.job.future.jobservice.repository.RoleRepository;
 import com.job.future.jobservice.repository.UserRepository;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -28,7 +29,9 @@ public class UserDetailsServiceIpm implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(USER_NOT_FOUND));
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+
 
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
@@ -46,5 +49,6 @@ public class UserDetailsServiceIpm implements UserDetailsService {
         userRoles.forEach(userRole -> authorities.add(new SimpleGrantedAuthority(userRole.getRole().getName())));
         return authorities;
     }
+
     }
 
