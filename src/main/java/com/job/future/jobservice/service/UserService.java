@@ -1,10 +1,9 @@
 package com.job.future.jobservice.service;
 
-import com.job.future.jobservice.dto.user.CreateAccountDTO;
-import com.job.future.jobservice.model.Users;
+import com.job.future.jobservice.model.User;
 
 public interface UserService {
-    void createUser(CreateAccountDTO accountDTO);
+    String signin(String username, String password);
 
-    void deleteUser(String username);
+    String signup(User user);
 }
