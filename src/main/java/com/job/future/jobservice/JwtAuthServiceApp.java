@@ -1,5 +1,6 @@
 package com.job.future.jobservice;
 
+import com.job.future.jobservice.dto.user.UserDataDTO;
 import com.job.future.jobservice.model.Role;
 import com.job.future.jobservice.model.User;
 import com.job.future.jobservice.service.UserService;
@@ -32,20 +33,21 @@ public class JwtAuthServiceApp implements CommandLineRunner {
     @Override
     public void run(String... params) throws Exception {
 
-
-        userService.signup(User.builder()
-                .username("admin")
-                .password("admin")
-                .email("admin@gmail.com")
-                .roles(new ArrayList<>(Arrays.asList(Role.ROLE_ADMIN)))
-                .build());
-
-        userService.signup(User.builder()
-                .username("client")
-                .password("client")
-                .email("client.com")
-                .roles(new ArrayList<>(Arrays.asList(Role.ROLE_CLIENT)))
-                .build());
+//        UserDataDTO user = UserDataDTO.builder()
+//                .username("admin")
+//                .password("admin")
+//                .email("admin@gmail.com")
+//                .roles(new ArrayList<>(Arrays.asList(Role.ROLE_ADMIN)))
+//                .build();
+//        userService.signup(user);
+//
+//        UserDataDTO user1 = UserDataDTO.builder()
+//                .username("client")
+//                .password("client")
+//                .email("client.com")
+//                .roles(new ArrayList<>(Arrays.asList(Role.ROLE_CLIENT)))
+//                .build();
+//        userService.signup(user1);
 
     }
 

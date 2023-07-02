@@ -19,4 +19,5 @@ public class PostPostContentApiRequest {
 
     private final String content;
 
+
 }

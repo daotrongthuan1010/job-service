@@ -1,5 +1,6 @@
 package com.job.future.jobservice.service.serviceIpm;
 
+import com.job.future.jobservice.dto.user.UserDataDTO;
 import com.job.future.jobservice.exception.handler.CustomException;
 import com.job.future.jobservice.model.User;
 import com.job.future.jobservice.repository.UserRepository;
@@ -35,10 +36,12 @@ public class UserServiceIpm implements UserService {
     }
 
     @Override
-    public String signup(User user) {
+    public String signup(UserDataDTO user) {
         if (!userRepository.existsByUsername(user.getUsername())) {
 
             userRepository.save(User.builder()
+                    .username(user.getUsername())
+                    .email(user.getEmail())
                     .password(passwordEncoder.encode(user.getPassword()))
                     .build());
             return jwtTokenProvider.createToken(user.getUsername(), user.getRoles());

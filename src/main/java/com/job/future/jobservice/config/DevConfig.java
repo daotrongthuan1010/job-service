@@ -1,8 +1,10 @@
 package com.job.future.jobservice.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author thuandao1010
@@ -13,5 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 @Profile("dev")
 @PropertySource("classpath:application.yml")
 public class DevConfig {
+
+
 
 }

@@ -39,8 +39,11 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
 server:
   port: 8080
-SECRET_KEY: your_secret_key_value
-EXPIRE_TIME:  86400000
-
-
+security:
+  jwt:
+    token:
+      secret-key: secret-key
+      expire-length: 300000
+api:
+  url: https://provinces.open-api.vn/api/d/search
 
