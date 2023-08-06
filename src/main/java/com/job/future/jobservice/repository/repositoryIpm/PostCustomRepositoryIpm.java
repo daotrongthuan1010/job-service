@@ -32,23 +32,12 @@ import java.util.List;
  */
 
 @Repository
-<<<<<<< Updated upstream
 public class PostCustomRepositoryIpm implements PostContentCustomRepository {
-=======
-@RequiredArgsConstructor
-public class PostCustomRepositoryIpm implements PostCustomRepository {
->>>>>>> Stashed changes
 
     @PersistenceContext
     private EntityManager entityManager;
 
     private static final Logger log = LogManager.getLogger(PostCustomRepositoryIpm.class);
-
-
-    private final PostCustomRepository postCustomRepository;
-
-
-    private final PostContentRepository postContentRepository;
 
 
     @Override
