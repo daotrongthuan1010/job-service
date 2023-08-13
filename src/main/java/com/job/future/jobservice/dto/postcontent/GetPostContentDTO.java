@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 public class GetPostContentDTO {
+
     private String code;
 
     private String title;

@@ -7,7 +7,6 @@ import com.job.future.jobservice.repository.PostCustomRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -40,8 +39,8 @@ public class PostCustomRepositoryIpm implements PostCustomRepository {
 
 //bcd
 
+      //ccd
 
-      //test-1
 
 //      return entityManager.createQuery(ConstantSQL.FIND_POST_CONTENT_BY_TITLE, Post.class)
 //              .setParameter("title", title)
