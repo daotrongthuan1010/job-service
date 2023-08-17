@@ -45,6 +45,14 @@ public class PostCustomRepositoryIpm implements PostCustomRepository {
 
       //ccd
 
+      //addq
+
+      //ccd
+
+      //ddd
+
+      //kk
+
 
 
 //      return entityManager.createQuery(ConstantSQL.FIND_POST_CONTENT_BY_TITLE, Post.class)
