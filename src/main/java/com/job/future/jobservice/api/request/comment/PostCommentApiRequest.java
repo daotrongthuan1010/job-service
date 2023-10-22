@@ -6,4 +6,6 @@ import lombok.Getter;
 @Getter
 @Builder
 public class PostCommentApiRequest {
+
+    private String name;
 }

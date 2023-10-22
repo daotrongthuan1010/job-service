@@ -12,18 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PessimisticLockException;
-=======
-import com.job.future.jobservice.repository.PostContentRepository;
-import com.job.future.jobservice.repository.PostCustomRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
->>>>>>> Stashed changes
 
 /**
  * @author thuandao1010
