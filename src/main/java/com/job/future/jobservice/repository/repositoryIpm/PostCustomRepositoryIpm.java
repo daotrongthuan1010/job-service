@@ -29,6 +29,10 @@ public class PostCustomRepositoryIpm implements PostContentCustomRepository {
 
     //commit 1
 
+    int a = 2;
+
+    int b = 3;
+
     //commit 2
 
     @Override
