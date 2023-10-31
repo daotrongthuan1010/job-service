@@ -27,6 +27,10 @@ public class PostCustomRepositoryIpm implements PostContentCustomRepository {
 
     private static final Logger log = LogManager.getLogger(PostCustomRepositoryIpm.class);
 
+    // test code 1
+
+    // test code 2
+
     //commit 1
 
     int a = 2;
